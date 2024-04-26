@@ -4,21 +4,28 @@ with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
 ## edit below variables as per your requirements -
-REPO_NAME = "ML Based Books Recommender System"
-AUTHOR_USER_NAME = "BOKTIAR AHMED BAPPY"
-SRC_REPO = "books_recommender"
-LIST_OF_REQUIREMENTS = []
+REPO_NAME = "ML Based Job Offers Recommender System"
+AUTHOR_USER_NAME = "Khalil SAMBA"
+SRC_REPO = "job_offers_recommender"
+LIST_OF_REQUIREMENTS = [
+    "streamlit",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "notebook",
+    "PyYAML"
+]
 
 
 setup(
     name=SRC_REPO,
     version="0.0.1",
-    author="BOKTIAR AHMED BAPPY",
-    description="A small local packages for ML based books recommendations",
+    author=AUTHOR_USER_NAME,
+    description="A small local packages for ML based job offers recommendations",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/entbappy/ML-Based-Book-Recommender-System",
-    author_email="boktiar@ineuron.ai",
+    url="https://github.com/Ksambaa/ML-Based-JobOffers-Recommender-System",
+    author_email="khaliilsambaa@gmail.com",
     packages=find_packages(),
     license="MIT",
     python_requires=">=3.7",
