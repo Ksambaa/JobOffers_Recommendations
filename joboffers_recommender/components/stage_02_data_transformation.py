@@ -2,9 +2,9 @@ import os
 import sys
 import pickle
 import pandas as pd
-from books_recommender.logger.log import logging
-from books_recommender.config.configuration import AppConfiguration
-from books_recommender.exception.exception_handler import AppException
+from joboffers_recommender.logger.log import logging
+from joboffers_recommender.config.configuration import AppConfiguration
+from joboffers_recommender.exception.exception_handler import AppException
 
 
 
@@ -22,27 +22,27 @@ class DataTransformation:
         try:
             df = pd.read_csv(self.data_transformation_config.clean_data_file_path)
             # Lets create a pivot table
-            book_pivot = df.pivot_table(columns='user_id', index='title', values= 'rating')
-            logging.info(f" Shape of book pivot table: {book_pivot.shape}")
-            book_pivot.fillna(0, inplace=True)
+            joboffer_pivot = df.pivot_table(columns='user_id', index='title', values= 'rating')
+            logging.info(f" Shape of joboffer pivot table: {joboffer_pivot.shape}")
+            joboffer_pivot.fillna(0, inplace=True)
 
             #saving pivot table data
             os.makedirs(self.data_transformation_config.transformed_data_dir, exist_ok=True)
-            pickle.dump(book_pivot,open(os.path.join(self.data_transformation_config.transformed_data_dir,"transformed_data.pkl"),'wb'))
+            pickle.dump(joboffer_pivot,open(os.path.join(self.data_transformation_config.transformed_data_dir,"transformed_data.pkl"),'wb'))
             logging.info(f"Saved pivot table data to {self.data_transformation_config.transformed_data_dir}")
 
-            #keeping books name
-            book_names = book_pivot.index
+            #keeping joboffers name
+            joboffer_names = joboffer_pivot.index
 
-            #saving book_names objects for web app
+            #saving joboffer_names objects for web app
             os.makedirs(self.data_validation_config.serialized_objects_dir, exist_ok=True)
-            pickle.dump(book_names,open(os.path.join(self.data_validation_config.serialized_objects_dir, "book_names.pkl"),'wb'))
-            logging.info(f"Saved book_names serialization object to {self.data_validation_config.serialized_objects_dir}")
+            pickle.dump(joboffer_names,open(os.path.join(self.data_validation_config.serialized_objects_dir, "book_names.pkl"),'wb'))
+            logging.info(f"Saved joboffer_names serialization object to {self.data_validation_config.serialized_objects_dir}")
 
-            #saving book_pivot objects for web app
+            #saving joboffer_pivot objects for web app
             os.makedirs(self.data_validation_config.serialized_objects_dir, exist_ok=True)
-            pickle.dump(book_pivot,open(os.path.join(self.data_validation_config.serialized_objects_dir, "book_pivot.pkl"),'wb'))
-            logging.info(f"Saved book_pivot serialization object to {self.data_validation_config.serialized_objects_dir}")
+            pickle.dump(joboffer_pivot,open(os.path.join(self.data_validation_config.serialized_objects_dir, "book_pivot.pkl"),'wb'))
+            logging.info(f"Saved joboffer_pivot serialization object to {self.data_validation_config.serialized_objects_dir}")
 
         except Exception as e:
             raise AppException(e, sys) from e

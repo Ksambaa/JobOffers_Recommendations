@@ -3,9 +3,9 @@ import sys
 import pickle
 from sklearn.neighbors import NearestNeighbors
 from scipy.sparse import csr_matrix
-from books_recommender.logger.log import logging
-from books_recommender.config.configuration import AppConfiguration
-from books_recommender.exception.exception_handler import AppException
+from joboffers_recommender.logger.log import logging
+from joboffers_recommender.config.configuration import AppConfiguration
+from joboffers_recommender.exception.exception_handler import AppException
 
 
 class ModelTrainer:
@@ -19,11 +19,11 @@ class ModelTrainer:
     def train(self):
         try:
             #loading pivot data
-            book_pivot = pickle.load(open(self.model_trainer_config.transformed_data_file_dir,'rb'))
-            book_sparse = csr_matrix(book_pivot)
+            joboffer_pivot = pickle.load(open(self.model_trainer_config.transformed_data_file_dir,'rb'))
+            joboffer_sparse = csr_matrix(joboffer_pivot)
             #Training model
             model = NearestNeighbors(algorithm= 'brute')
-            model.fit(book_sparse)
+            model.fit(joboffer_sparse)
 
             #Saving model object for recommendations
             os.makedirs(self.model_trainer_config.trained_model_dir, exist_ok=True)

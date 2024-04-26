@@ -5,7 +5,7 @@ DataIngestionConfig = namedtuple("DatasetConfig", ["dataset_download_url",
                                                    "ingested_dir"])
 
 DataValidationConfig = namedtuple("DataValidationConfig", ["clean_data_dir",
-                                                         "books_csv_file",
+                                                         "joboffers_csv_file",
                                                          "ratings_csv_file",
                                                          "serialized_objects_dir"])     
 
@@ -21,8 +21,8 @@ ModelTrainerConfig = namedtuple("ModelTrainerConfig", ["transformed_data_file_di
 
 
 
-ModelRecommendationConfig = namedtuple("ModelRecommendationConfig", ["book_name_serialized_objects",
-                                                      "book_pivot_serialized_objects",
+ModelRecommendationConfig = namedtuple("ModelRecommendationConfig", ["joboffer_name_serialized_objects",
+                                                      "joboffer_pivot_serialized_objects",
                                                       "final_rating_serialized_objects",
                                                       "trained_model_path"])
 

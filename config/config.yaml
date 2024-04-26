@@ -11,7 +11,7 @@ data_ingestion_config:
 data_validation_config:
   clean_data_dir: clean_data
   serialized_objects_dir: serialized_objects
-  books_csv_file: BX-Books.csv
+  joboffers_csv_file: BX-Books.csv
   ratings_csv_file: BX-Book-Ratings.csv
 
 

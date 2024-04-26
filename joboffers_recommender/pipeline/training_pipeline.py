@@ -1,7 +1,7 @@
-from books_recommender.components.stage_00_data_ingestion import DataIngestion
-from books_recommender.components.stage_01_data_validation import DataValidation
-from books_recommender.components.stage_02_data_transformation import DataTransformation
-from books_recommender.components.stage_03_model_trainer import ModelTrainer
+from joboffers_recommender.components.stage_00_data_ingestion import DataIngestion
+from joboffers_recommender.components.stage_01_data_validation import DataValidation
+from joboffers_recommender.components.stage_02_data_transformation import DataTransformation
+from joboffers_recommender.components.stage_03_model_trainer import ModelTrainer
 
 
 
